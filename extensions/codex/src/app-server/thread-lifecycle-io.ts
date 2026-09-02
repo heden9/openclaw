@@ -35,7 +35,6 @@ import {
   readActiveCodexTurnIdsFromResume,
 } from "./thread-fingerprints.js";
 import {
-  CodexAdoptedThreadActiveError,
   CodexRestrictedToolSurfaceAttestationError,
   CodexThreadBindingConflictError,
   CodexThreadStartRequestError,
@@ -177,7 +176,6 @@ export async function resumeExistingCodexThread(
         request: resumeParams,
         signal: params.signal,
         assertCurrent: context.assertResumeOwnership,
-        isPrewriteOwnershipError: (error) => error instanceof CodexAdoptedThreadActiveError,
       }),
     );
     resumeResponseAccepted = true;
